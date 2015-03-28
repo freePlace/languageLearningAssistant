@@ -28,7 +28,7 @@
 		<li class="divider"></li>
 		<li><a href="">
 				<div>
-					<i class="fa fa-tasks fa-fw"></i> New Task <span
+					<i class="fa fa-tasks fa-fw"></i> ${SITE_CONTENT[TASK]}<span
 						class="pull-right text-muted small">4 minutes ago</span>
 				</div>
 		</a></li>

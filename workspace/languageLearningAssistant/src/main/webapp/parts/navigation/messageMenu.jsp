@@ -7,8 +7,8 @@
 	<ul class="dropdown-menu dropdown-messages">
 		<li><a href="">
 				<div>
-					<strong>Author</strong> <span class="pull-right text-muted">
-						<em>Date/Time</em>
+					<strong>${SITE_CONTENT[AUTHOR]}</strong> <span class="pull-right text-muted">
+						<em>${SITE_CONTENT[DATE_TIME]}</em>
 					</span>
 				</div>
 				<div>Text of message...</div>

@@ -43,7 +43,7 @@ public class WelcomeService {
             Metadata metadata = getMetadataService().get();
             session.setAttribute(Attributes.SESSION_PROJECT_NAME, metadata.getProjectName());
             session.setAttribute(Attributes.SESSION_AUTHOR_NAME, metadata.getAuthorName());
-            session.setAttribute(Attributes.SESSION_SITE_CONTENT, siteContentService.get());
+            session.setAttribute(Attributes.SESSION_SITE_CONTENT, siteContentService.getEnglish());
         }
     }
 

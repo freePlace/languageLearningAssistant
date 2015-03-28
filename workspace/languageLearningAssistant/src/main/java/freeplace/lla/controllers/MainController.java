@@ -2,6 +2,9 @@ package freeplace.lla.controllers;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -9,7 +12,10 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import freeplace.lla.controllers.constants.Attributes;
+import freeplace.lla.controllers.constants.Parameters;
 import freeplace.lla.controllers.constants.Pathes;
+import freeplace.lla.model.constants.Languages;
+import freeplace.lla.model.data.service.SiteContentServiceImpl;
 import freeplace.lla.model.data.service.UserMessageServiceImpl;
 import freeplace.lla.model.entities.SiteContent;
 import freeplace.lla.model.entities.UserMessage;
@@ -42,6 +48,9 @@ public class MainController {
     @Autowired
     private UserMessageServiceImpl userMessageService;
 
+    @Autowired
+    private SiteContentServiceImpl siteContentService;
+
     /**
      * method for redirecting to main page
      * @param model
@@ -51,7 +60,6 @@ public class MainController {
     @RequestMapping(value= Pathes.SLASH + Pathes.MAIN, method = RequestMethod.GET)
     public final String getMainPage(final ModelMap model, HttpSession session) {
        model.addAttribute(Attributes.COMMENTS, commentService.findAll());
-       List<SiteContent> sc =  (List<SiteContent>)session.getAttribute(Attributes.SESSION_SITE_CONTENT);
        return Pathes.MAIN;
     }
 
@@ -93,5 +101,26 @@ public class MainController {
         resultComment.add(linkTo(methodOn(MainController.class).addComment(request)).withSelfRel());
 
         return new ResponseEntity<Comment>(resultComment, HttpStatus.OK);
+    }
+
+    @RequestMapping(value= Pathes.CHANGE_LANGUAGE, method = RequestMethod.GET)
+    public final String getMainPage(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
+        String language = URLEncoder.encode(request.getParameter(Parameters.LANGUAGE), "UTF-8");
+        List<String> siteContent = null;
+        if(language.equals(Languages.English.name())) {
+            siteContent = siteContentService.getEnglish();
+        } else if(language.equals(Languages.French.name())) {
+            siteContent = siteContentService.getFrench();
+        } else  if(language.equals(Languages.Russian.name())) {
+            siteContent = siteContentService.getRussian();
+        } else {
+            // unknown lang. by default: eng
+            siteContent = siteContentService.getEnglish();
+        }
+        session.setAttribute(Attributes.SESSION_SITE_CONTENT, siteContent);
+        String fullUrl = request.getRequestURL().toString();
+        String returnUrl = "redirect:" + fullUrl.replace("changeLanguage","");
+
+        return returnUrl;
     }
 }

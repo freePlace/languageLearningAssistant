@@ -39,7 +39,7 @@ INSERT INTO site_content VALUES(26,'Logout','','Выход');
 
 -- Insertion of languages
 INSERT INTO language(language_id, language_name) VALUES(1, 'English');
-INSERT INTO language(language_id, language_name) VALUES(2, 'Русский');
+INSERT INTO language(language_id, language_name) VALUES(2, 'Russian');
 INSERT INTO language(language_id, language_name) VALUES(3, 'French');
 -- Insertion of roles
 INSERT INTO role(role_id, name) VALUES(1, 'ROLE_ADMIN');
