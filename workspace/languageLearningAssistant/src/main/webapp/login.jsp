@@ -5,7 +5,6 @@
     <%@include file="parts/head.jsp"%>
     <head>
         <link rel="stylesheet" type="text/css" href="src/main/webapp/resources/styles/main.css"/>
-        <link rel="stylesheet" type="text/css" href="src/main/webapp/resources/styles/main.css"/>
     </head>
     <body>
     <div class="wrapper">
