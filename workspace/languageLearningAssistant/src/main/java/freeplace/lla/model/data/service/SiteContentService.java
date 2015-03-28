@@ -7,4 +7,7 @@ import java.util.List;
  */
 public interface SiteContentService<SiteContent> extends BasicService<SiteContent>{
     List<SiteContent> get();
+    List<String> getEnglish();
+    List<String> getFrench();
+    List<String> getRussian();
 }
