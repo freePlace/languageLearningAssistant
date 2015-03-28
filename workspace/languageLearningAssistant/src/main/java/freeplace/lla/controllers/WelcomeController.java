@@ -2,8 +2,6 @@ package freeplace.lla.controllers;
 
 import freeplace.lla.controllers.constants.Attributes;
 import freeplace.lla.controllers.constants.Pathes;
-import freeplace.lla.model.data.service.LanguageServiceImpl;
-import freeplace.lla.model.entities.Metadata;
 import freeplace.lla.model.service.WelcomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

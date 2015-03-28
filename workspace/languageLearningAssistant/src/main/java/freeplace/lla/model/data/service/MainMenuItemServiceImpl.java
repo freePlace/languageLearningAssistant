@@ -3,7 +3,6 @@ package freeplace.lla.model.data.service;
 import freeplace.lla.model.data.repositories.MainMenuItemRepository;
 import freeplace.lla.model.entities.MainMenuItem;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

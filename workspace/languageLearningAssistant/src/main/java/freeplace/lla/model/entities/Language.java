@@ -1,6 +1,5 @@
 package freeplace.lla.model.entities;
 
-import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import javax.persistence.*;
@@ -65,5 +64,13 @@ public class Language {
     @Override
     public int hashCode() {
         return Objects.hashCode(this.name);
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }

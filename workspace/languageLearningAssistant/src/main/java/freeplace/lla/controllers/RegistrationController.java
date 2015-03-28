@@ -6,9 +6,6 @@ import javax.validation.Valid;
 import freeplace.lla.controllers.constants.Attributes;
 import freeplace.lla.controllers.constants.Messages;
 import freeplace.lla.controllers.constants.Pathes;
-import freeplace.lla.model.data.service.LanguageServiceImpl;
-import freeplace.lla.model.data.service.UserAccountServiceImpl;
-import freeplace.lla.model.entities.UserAccount;
 import freeplace.lla.model.service.RegistrationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +14,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import freeplace.lla.model.constants.ApplicationRoles;
-import freeplace.lla.model.data.service.RoleServiceImpl;
-import freeplace.lla.model.data.service.UserServiceImpl;
 import freeplace.lla.model.springforms.User;
 
 
