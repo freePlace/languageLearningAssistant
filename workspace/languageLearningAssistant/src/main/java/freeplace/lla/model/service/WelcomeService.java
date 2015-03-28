@@ -3,6 +3,7 @@ package freeplace.lla.model.service;
 import freeplace.lla.controllers.constants.Attributes;
 import freeplace.lla.model.data.service.LanguageServiceImpl;
 import freeplace.lla.model.data.service.MetadataServiceImpl;
+import freeplace.lla.model.data.service.SiteContentServiceImpl;
 import freeplace.lla.model.entities.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,9 @@ public class WelcomeService {
 
     @Autowired
     private MetadataServiceImpl metadataService;
+
+    @Autowired
+    private SiteContentServiceImpl siteContentService;
 
     public LanguageServiceImpl getLanguageService() {
         return languageService;
@@ -39,6 +43,15 @@ public class WelcomeService {
             Metadata metadata = getMetadataService().get();
             session.setAttribute(Attributes.SESSION_PROJECT_NAME, metadata.getProjectName());
             session.setAttribute(Attributes.SESSION_AUTHOR_NAME, metadata.getAuthorName());
+            session.setAttribute(Attributes.SESSION_SITE_CONTENT, siteContentService.get());
         }
+    }
+
+    public SiteContentServiceImpl getSiteContentService() {
+        return siteContentService;
+    }
+
+    public void setSiteContentService(SiteContentServiceImpl siteContentService) {
+        this.siteContentService = siteContentService;
     }
 }

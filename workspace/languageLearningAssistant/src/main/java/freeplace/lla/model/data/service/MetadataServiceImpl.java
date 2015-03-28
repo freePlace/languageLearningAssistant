@@ -24,26 +24,30 @@ public class MetadataServiceImpl implements MetadataService<Metadata>{
 
     @Override
     public Metadata add(Metadata object) {
-        throw new UnsupportedOperationException();
+        return metadataRepository.save(object);
     }
 
     @Override
     public Metadata update(Metadata object) {
-        throw new UnsupportedOperationException();
+
+        return metadataRepository.save(object);
     }
 
     @Override
     public void delete(Metadata object) {
-        throw new UnsupportedOperationException();
+
+        metadataRepository.delete(object);
     }
 
     @Override
     public List<Metadata> findAll() {
-        throw new UnsupportedOperationException();
+
+        return metadataRepository.findAll();
     }
 
     @Override
     public Metadata findById(Long id) {
-        throw new UnsupportedOperationException();
+
+        return metadataRepository.findOne(id);
     }
 }

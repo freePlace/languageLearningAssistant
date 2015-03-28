@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"
 	pageEncoding="utf-8"%>
 <li class="dropdown"><a class="dropdown-toggle"
-	data-toggle="dropdown" href="#"> <i class="fa fa-tasks fa-fw"></i>
+	data-toggle="dropdown" href=""> <i class="fa fa-tasks fa-fw"></i>
 		<i class="fa fa-caret-down"></i>
 </a>
 	<ul class="dropdown-menu dropdown-tasks">
-		<li><a href="#">
+		<li><a href="">
 				<div>
 					<p>
 						<strong>Task 1</strong> <span class="pull-right text-muted">40%
@@ -21,7 +21,7 @@
 				</div>
 		</a></li>
 		<li class="divider"></li>
-		<li><a href="#">
+		<li><a href="">
 				<div>
 					<p>
 						<strong>Task 2</strong> <span class="pull-right text-muted">20%
@@ -37,7 +37,7 @@
 				</div>
 		</a></li>
 		<li class="divider"></li>
-		<li><a href="#">
+		<li><a href="">
 				<div>
 					<p>
 						<strong>Task 3</strong> <span class="pull-right text-muted">60%
@@ -53,7 +53,7 @@
 				</div>
 		</a></li>
 		<li class="divider"></li>
-		<li><a href="#">
+		<li><a href="">
 				<div>
 					<p>
 						<strong>Task 4</strong> <span class="pull-right text-muted">80%
@@ -69,7 +69,7 @@
 				</div>
 		</a></li>
 		<li class="divider"></li>
-		<li><a class="text-center" href="#"> <strong>See All
+		<li><a class="text-center" href=""> <strong>See All
 					Tasks</strong> <i class="fa fa-angle-right"></i>
 		</a></li>
 	</ul> <!-- /.dropdown-tasks --></li>

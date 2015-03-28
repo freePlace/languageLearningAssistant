@@ -39,6 +39,8 @@
         <mapping class="freeplace.lla.model.entities.UserAccount" />
         <mapping class="freeplace.lla.model.entities.Language" />
         <mapping class="freeplace.lla.model.entities.UserMessage" />
+        <mapping class="freeplace.lla.model.entities.SiteContent" />
+        <mapping class="freeplace.lla.model.entities.MainMenuItem" />
 
 
 	</session-factory>

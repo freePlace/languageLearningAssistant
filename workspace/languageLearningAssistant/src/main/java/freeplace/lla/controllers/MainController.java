@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import freeplace.lla.controllers.constants.Attributes;
 import freeplace.lla.controllers.constants.Pathes;
 import freeplace.lla.model.data.service.UserMessageServiceImpl;
+import freeplace.lla.model.entities.SiteContent;
 import freeplace.lla.model.entities.UserMessage;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,6 +51,7 @@ public class MainController {
     @RequestMapping(value= Pathes.SLASH + Pathes.MAIN, method = RequestMethod.GET)
     public final String getMainPage(final ModelMap model, HttpSession session) {
        model.addAttribute(Attributes.COMMENTS, commentService.findAll());
+       List<SiteContent> sc =  (List<SiteContent>)session.getAttribute(Attributes.SESSION_SITE_CONTENT);
        return Pathes.MAIN;
     }
 

@@ -5,7 +5,7 @@
 		<i class="fa fa-caret-down"></i>
 </a>
 	<ul class="dropdown-menu dropdown-messages">
-		<li><a href="#">
+		<li><a href="">
 				<div>
 					<strong>Author</strong> <span class="pull-right text-muted">
 						<em>Date/Time</em>
