@@ -1,7 +1,7 @@
 #Local settings:
 
 .idea/**
-
-sql/**
+target/**
+.gitignor
 
 languageLearningAssistant.iml

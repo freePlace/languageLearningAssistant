@@ -21,6 +21,7 @@ body {
 	padding: 0;
 }
 
+
 .header {
 	background: url(http://www.rakowconstruction.com/wp-content/uploads/2011/09/log-background-feature-header1.jpg);
 	height: 150px;
@@ -36,10 +37,15 @@ body {
 
 /*Aligning login area*/
 #enter {
+	height:400px;
 	padding-top:50px;
 	width: 40%;
 	margin:auto;
 	
+}
+
+div#enter h3 {
+	text-align: center;
 }
 
 #userLoginForm {
@@ -63,9 +69,33 @@ body {
 	line-height: 30px;
 }
 
-div#enter h3 {
-	text-align: center;
+/*Registraiton form*/
+#regForm {
+	width: 100%;
+	height: 100%;
 }
+
+#regForm form {
+	margin:auto;
+
+}
+form#newRegForm{
+
+}
+
+
+#regForm form {
+	margin:auto;
+
+}
+/*
+#regForm td {
+	margin-left:5px;
+}
+
+*/
+
+
 
 /*OBV language switch panel*/
 .nativeLanguage {

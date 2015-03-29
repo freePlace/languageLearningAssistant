@@ -1,16 +1,13 @@
-<%@ page language="java" contentType="text/html;charset=utf-8"
-	pageEncoding="utf-8"%>
 <%@include file="parts/header.jsp"%>
 <html>
+	<!-- HEAD block-->
     <%@include file="parts/head.jsp"%>
-    <head>
-        <link rel="stylesheet" type="text/css" href="src/main/webapp/resources/styles/main.css"/>
-    </head>
+	<!-- HEAD block-->
     <body>
     	<div class="wrapper">
-        	<div class="header"></div>        
-        	<%@include file="parts/languageBar.jsp" %>
+        	<div class="header"></div>
         	<div class="main">
+				<%@include file="parts/languageBar.jsp" %>
             	<div ID="enter">
                 	<h3>${SITE_CONTENT[WELCOME_LOGIN]}</h3>
                 	<div ID="userLoginForm">
