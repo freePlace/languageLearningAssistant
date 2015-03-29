@@ -49,4 +49,19 @@ public class SiteContentServiceImpl implements SiteContentService<SiteContent>{
     public List<SiteContent> get() {
         return siteContentRepository.findAll();
     }
+
+    @Override
+    public List<String> getEnglish() {
+        return siteContentRepository.findEnglish();
+    }
+
+    @Override
+    public List<String> getFrench() {
+        return siteContentRepository.findFrench();
+    }
+
+    @Override
+    public List<String> getRussian() {
+        return siteContentRepository.findRussian();
+    }
 }

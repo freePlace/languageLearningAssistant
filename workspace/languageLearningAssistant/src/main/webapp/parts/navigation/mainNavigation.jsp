@@ -22,15 +22,13 @@
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<jsp:include page="parts/navigation/search.jsp"></jsp:include>
-				<li><a href=""><i class="fa fa-dashboard fa-fw"></i> Main</a>
+				<li><a href=""><i class="fa fa-dashboard fa-fw"></i>${SITE_CONTENT[MAIN]}</a>
 				</li>
-				<li><a href=""><i class="fa fa-table fa-fw"></i> Statistics</a>
-				<li><a href=""><i class="fa fa-table fa-fw"></i> Trainings</a>
+				<li><a href=""><i class="fa fa-table fa-fw"></i>${SITE_CONTENT[STATISTICS]}</a>
+				<li><a href=""><i class="fa fa-table fa-fw"></i>${SITE_CONTENT[TRAININGS]}</a>
 				</li>
-				<li><a href=""><i class="fa fa-edit fa-fw"></i> Courses</a></li>
+				<li><a href=""><i class="fa fa-edit fa-fw"></i>${SITE_CONTENT[COURSES]}</a></li>
 			</ul>
 		</div>
-		<!-- /.sidebar-collapse -->
 	</div>
-	<!-- /.navbar-static-side -->
 </nav>

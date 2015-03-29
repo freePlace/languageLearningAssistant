@@ -3,16 +3,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="panel panel-default">
 	<div class="panel-heading">
-		Add:
+        ${SITE_CONTENT[ADD_NEW_COMMENT]}:
 	</div>
 	<div>
 		<textarea class="form-control" rows="10" name="comment" id="commentMessage"></textarea>
 		<div align="right">
-			<input type="submit" id="addComment" value="Submit comment" class="btn btn-success" />
+			<input type="submit" id="addComment" value="${SITE_CONTENT[SUBMIT_COMMENT]}" class="btn btn-success" />
 		</div>	
 	</div>	
 	<div class="panel-heading" id="comments">
-		Comments:
+        ${SITE_CONTENT[COMMENTS]}:
 		<c:forEach var="comment" items="${comments}">
 			<div class="panel-heading"> ${comment.user.login}</div>
 			<div>${comment.message}</div>
