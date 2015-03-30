@@ -10,7 +10,7 @@
 		<li><a href=""><i class="fa fa-gear fa-fw"></i> ${SITE_CONTENT[SETTINGS]}</a></li>
 		<li class="divider"></li>
 		<li>
-			<a href='j_spring_security_logout'> ${SITE_CONTENT[LOGOUT]} ${SITE_CONTENT[1]} and ${LOGOUT}</a>
+			<a href='j_spring_security_logout'> ${SITE_CONTENT[LOGOUT]}</a>
 		</li>
 	</ul></li>
 <script>

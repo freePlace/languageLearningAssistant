@@ -9,6 +9,8 @@ public interface Attributes {
     public static final String SESSION_AUTHOR_NAME = "authorName";
     public static final String SESSION_LANGUAGES = "languages";
     public static final String SESSION_SITE_CONTENT = "siteContent";
+    public static final String SESSION_USER = "user";
+
 
     public static final String COMMENTS = "comments";
     public static final String MESSAGE = "message";

@@ -1,6 +1,7 @@
 package freeplace.lla.model.data.service;
 
 import freeplace.lla.model.data.repositories.UserMessageRepository;
+import freeplace.lla.model.entities.User;
 import freeplace.lla.model.entities.UserMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,5 +64,10 @@ public class UserMessageServiceImpl implements UserMessageService<UserMessage>{
     @Override
     public List<UserMessage> findAllOrderByDateDesc() {
         return userMessageRepository.findAllOrderByDateDesc();
+    }
+
+    @Override
+    public List<UserMessage> findByRecipient(User user) {
+        return userMessageRepository.findByRecipient(user);
     }
 }

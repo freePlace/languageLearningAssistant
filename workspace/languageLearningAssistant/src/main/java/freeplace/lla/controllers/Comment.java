@@ -15,7 +15,7 @@ public class Comment extends ResourceSupport {
     public Comment(@JsonProperty("comment") String comment) {
         this.comment = comment;
     }
-    public String getComment() {
+    public String getCommentInfo() {
         return comment;
     }
 

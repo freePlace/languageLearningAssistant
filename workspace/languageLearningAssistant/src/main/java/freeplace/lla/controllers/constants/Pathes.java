@@ -12,5 +12,6 @@ public interface Pathes {
     public static final String CHANGE_LANGUAGE = "changeLanguage";
     public static final String ADD_COMMENT = "addComment";
     public static final String LOGIN = "login";
+    public static final String GET_MESSAGES = "getMessages";
     public static final String PAGE_NOT_FOUND = "404";
 }

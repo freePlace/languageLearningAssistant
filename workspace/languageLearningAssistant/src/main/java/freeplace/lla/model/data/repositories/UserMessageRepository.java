@@ -1,5 +1,6 @@
 package freeplace.lla.model.data.repositories;
 
+import freeplace.lla.model.entities.User;
 import freeplace.lla.model.entities.UserMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,6 +19,7 @@ public interface UserMessageRepository extends JpaRepository<UserMessage, Long> 
     public static final String FIND_CRITICAL_USER_MESSAGES = "select um from UserMessage um where um.isCritical = :isCritical";
     public static final String FIND_ALL_ORDER_BY_DATE_ASC = "select um from UserMessage um order by date asc";
     public static final String FIND_ALL_ORDER_BY_DATE_DESC = "select um from UserMessage um order by date desc";
+    public static final String FIND_BY_RECIPIENT = "select um from UserMessage um where recipient = :recipient order by date desc";
 
     @Query(FIND_NEW_USER_MESSAGES)
     List<UserMessage> findByIsNew(@Param("isNew") Boolean isNew);
@@ -30,4 +32,7 @@ public interface UserMessageRepository extends JpaRepository<UserMessage, Long> 
 
     @Query(FIND_ALL_ORDER_BY_DATE_DESC)
     List<UserMessage> findAllOrderByDateDesc();
+
+    @Query(FIND_BY_RECIPIENT)
+    List<UserMessage> findByRecipient(@Param("recipient") User user);
 }

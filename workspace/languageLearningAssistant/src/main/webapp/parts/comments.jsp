@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <div class="panel panel-default">
 	<div class="panel-heading">
         ${SITE_CONTENT[ADD_NEW_COMMENT]}:

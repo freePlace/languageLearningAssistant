@@ -12,16 +12,16 @@
 	</div>
 
 	<ul class="nav navbar-top-links navbar-right">
-		<jsp:include page="parts/navigation/messageMenu.jsp"></jsp:include>
-		<jsp:include page="parts/navigation/taskMenu.jsp"></jsp:include>
-		<jsp:include page="parts/navigation/alert.jsp"></jsp:include>
-		<jsp:include page="parts/navigation/userMenu.jsp"></jsp:include>
+	    <%@include file="messageMenu.jsp"%>
+        <%@include file="taskMenu.jsp"%>
+        <%@include file="alert.jsp"%>
+        <%@include file="userMenu.jsp"%>
 	</ul>
 
 	<div class="navbar-default sidebar" role="navigation">
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
-				<jsp:include page="parts/navigation/search.jsp"></jsp:include>
+			    <%@include file="search.jsp"%>
 				<li><a href=""><i class="fa fa-dashboard fa-fw"></i>${SITE_CONTENT[MAIN]}</a>
 				</li>
 				<li><a href=""><i class="fa fa-table fa-fw"></i>${SITE_CONTENT[STATISTICS]}</a>

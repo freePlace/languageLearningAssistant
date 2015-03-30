@@ -6,6 +6,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import freeplace.lla.model.data.service.SiteContentServiceImpl;
 import freeplace.lla.model.data.service.UserMessageServiceImpl;
 import freeplace.lla.model.entities.SiteContent;
 import freeplace.lla.model.entities.UserMessage;
+import freeplace.lla.model.service.MainService;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -39,17 +41,9 @@ import freeplace.lla.model.data.service.UserServiceImpl;
 @Controller
 public class MainController {
 
-    @Autowired
-    private UserServiceImpl userService;
 
     @Autowired
-    private CommentServiceImpl commentService;
-
-    @Autowired
-    private UserMessageServiceImpl userMessageService;
-
-    @Autowired
-    private SiteContentServiceImpl siteContentService;
+    private MainService mainService;
 
     /**
      * method for redirecting to main page
@@ -59,15 +53,35 @@ public class MainController {
      */
     @RequestMapping(value= Pathes.SLASH + Pathes.MAIN, method = RequestMethod.GET)
     public final String getMainPage(final ModelMap model, HttpSession session) {
-       model.addAttribute(Attributes.COMMENTS, commentService.findAll());
+       model.addAttribute(Attributes.COMMENTS, mainService.findAllComments());
+       String login = SecurityContextHolder.getContext().getAuthentication().getName();
+       session.setAttribute(Attributes.SESSION_USER, mainService.findUserByLogin(login));
        return Pathes.MAIN;
+    }
+
+    @RequestMapping(Pathes.MAIN + Pathes.SLASH + Pathes.GET_MESSAGES)
+    @ResponseBody
+    public HttpEntity<Message> getMessages(HttpSession session) {
+        List<UserMessage> userMessages = mainService.getByRecipient((freeplace.lla.model.entities.User) session.getAttribute(Attributes.USER));
+        Map<String, Map<String, String>> obj=new LinkedHashMap<>();
+        for(int i = 0; i < userMessages.size(); i++) {
+            UserMessage userMessage = userMessages.get(i);
+            Map<String, String> current = new LinkedHashMap<>();
+            current.put("date", userMessage.getDate().toString());
+            current.put("text", userMessage.getText());
+            current.put("author", userMessage.getAuthor().getLogin());
+            obj.put("message" + i, current);
+        }
+        Message message = new Message(JSONValue.toJSONString(obj));
+        message.add(linkTo(methodOn(MainController.class).getMessages(session)).withSelfRel());
+
+        return new ResponseEntity<Message>(message, HttpStatus.OK);
     }
 
     @RequestMapping(Pathes.MAIN + Pathes.SLASH + Pathes.USER_PROFILE_INFO)
     @ResponseBody
-    public HttpEntity<User> userProfileInfo() {
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        freeplace.lla.model.entities.User userModel = userService.findByLogin(login, true);
+    public HttpEntity<User> userProfileInfo(HttpSession session) {
+        freeplace.lla.model.entities.User userModel = (freeplace.lla.model.entities.User)session.getAttribute(Attributes.USER);
         Map<String, String> obj=new LinkedHashMap<>();
         obj.put( freeplace.lla.model.entities.User.NAME,userModel.getName());
         obj.put( freeplace.lla.model.entities.User.LAST_NAME,userModel.getLastName());
@@ -76,48 +90,39 @@ public class MainController {
         //Hibernate.initialize(userModel.getRole());
         obj.put( freeplace.lla.model.entities.User.ROLE_NAME,userModel.getRole().getName());
         User user = new User(JSONValue.toJSONString(obj));
-        user.add(linkTo(methodOn(MainController.class).userProfileInfo()).withSelfRel());
+        user.add(linkTo(methodOn(MainController.class).userProfileInfo(session)).withSelfRel());
 
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
     @RequestMapping(Pathes.MAIN + Pathes.SLASH + Pathes.ADD_COMMENT)
     @ResponseBody
-    public ResponseEntity<Comment> addComment(HttpServletRequest request) {
+    public ResponseEntity<Comment> addComment(HttpServletRequest request, HttpSession session) {
         String message = request.getParameter(Attributes.COMMENT_MESSAGE);
-        String login = SecurityContextHolder.getContext().getAuthentication().getName();
-        freeplace.lla.model.entities.User user = userService.findByLogin(login, true);
+        freeplace.lla.model.entities.User user = (freeplace.lla.model.entities.User)session.getAttribute(Attributes.USER);
         java.sql.Date now = new java.sql.Date(System.currentTimeMillis());
         freeplace.lla.model.entities.Comment comment = new freeplace.lla.model.entities.Comment();
         comment.setUser(user);
         comment.setMessage(message);
         comment.setDate(now);
-        commentService.add(comment);
+
+        mainService.addComment(comment);
+
         Map<String, String> obj=new LinkedHashMap<>();
         obj.put(freeplace.lla.model.entities.User.LOGIN, user.getLogin());
         obj.put(Attributes.COMMENT_MESSAGE, message);
         obj.put(Attributes.TIME, SimpleDateFormat.getInstance().format(new java.util.Date(now.getTime())));
         Comment resultComment = new Comment(JSONValue.toJSONString(obj));
-        resultComment.add(linkTo(methodOn(MainController.class).addComment(request)).withSelfRel());
+        resultComment.add(linkTo(methodOn(MainController.class).addComment(request, session)).withSelfRel());
 
         return new ResponseEntity<Comment>(resultComment, HttpStatus.OK);
     }
 
     @RequestMapping(value= Pathes.CHANGE_LANGUAGE, method = RequestMethod.GET)
     public final String getMainPage(HttpSession session, HttpServletRequest request) throws UnsupportedEncodingException {
-        String language = URLEncoder.encode(request.getParameter(Parameters.LANGUAGE), "UTF-8");
-        List<String> siteContent = null;
-        if(language.equals(Languages.English.name())) {
-            siteContent = siteContentService.getEnglish();
-        } else if(language.equals(Languages.French.name())) {
-            siteContent = siteContentService.getFrench();
-        } else  if(language.equals(Languages.Russian.name())) {
-            siteContent = siteContentService.getRussian();
-        } else {
-            // unknown lang. by default: eng
-            siteContent = siteContentService.getEnglish();
-        }
-        session.setAttribute(Attributes.SESSION_SITE_CONTENT, siteContent);
+        String language = request.getParameter(Parameters.LANGUAGE);
+        session.setAttribute(Attributes.SESSION_SITE_CONTENT, mainService.getSiteContentForLanguage(language));
+
         String fullUrl = request.getRequestURL().toString();
         String returnUrl = "redirect:" + fullUrl.replace("changeLanguage","");
 

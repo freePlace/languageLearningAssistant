@@ -1,5 +1,6 @@
 package freeplace.lla.model.data.service;
 
+import freeplace.lla.model.entities.User;
 import freeplace.lla.model.entities.UserMessage;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface UserMessageService<UserMessage> extends BasicService<UserMessag
     List<UserMessage> findByIsCritical(Boolean isCritical);
     List<UserMessage> findAllOrderByDateAsc();
     List<UserMessage> findAllOrderByDateDesc();
+    List<UserMessage> findByRecipient(User user);
 
 }
