@@ -1,10 +1,10 @@
 package freeplace.lla.model.service;
 
 import freeplace.lla.controllers.constants.Attributes;
-import freeplace.lla.model.data.service.LanguageServiceImpl;
-import freeplace.lla.model.data.service.MetadataServiceImpl;
-import freeplace.lla.model.data.service.SiteContentServiceImpl;
-import freeplace.lla.model.entities.Metadata;
+import freeplace.lla.model.data.service.global.LanguageServiceImpl;
+import freeplace.lla.model.data.service.global.MetadataServiceImpl;
+import freeplace.lla.model.data.service.global.SiteContentServiceImpl;
+import freeplace.lla.model.entities.global.Metadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

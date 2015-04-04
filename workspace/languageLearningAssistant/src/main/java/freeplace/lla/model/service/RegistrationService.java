@@ -1,11 +1,11 @@
 package freeplace.lla.model.service;
 
 import freeplace.lla.model.constants.ApplicationRoles;
-import freeplace.lla.model.data.service.LanguageServiceImpl;
-import freeplace.lla.model.data.service.RoleServiceImpl;
-import freeplace.lla.model.data.service.UserAccountServiceImpl;
-import freeplace.lla.model.data.service.UserServiceImpl;
-import freeplace.lla.model.entities.UserAccount;
+import freeplace.lla.model.data.service.global.LanguageServiceImpl;
+import freeplace.lla.model.data.service.user.RoleServiceImpl;
+import freeplace.lla.model.data.service.user.UserAccountServiceImpl;
+import freeplace.lla.model.data.service.user.UserServiceImpl;
+import freeplace.lla.model.entities.user.UserAccount;
 import freeplace.lla.model.springforms.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,7 +61,7 @@ public class RegistrationService {
     }
 
     public void createNewUserWithAccount(User user) {
-        freeplace.lla.model.entities.User userModel = new freeplace.lla.model.entities.User();
+        freeplace.lla.model.entities.user.User userModel = new freeplace.lla.model.entities.user.User();
         userModel.setName(user.getName());
         userModel.setLastName(user.getLastName());
         userModel.setEmail(user.getEmail());

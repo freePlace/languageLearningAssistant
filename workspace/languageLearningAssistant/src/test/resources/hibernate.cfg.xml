@@ -32,10 +32,10 @@
 		<!-- Drop and re-create the database schema on startup  
 		<property name="hbm2ddl.auto">create-drop</property>-->
 
-		<mapping class="freeplace.lla.model.entities.User" />
-		<mapping class="freeplace.lla.model.entities.Role" />
-		<mapping class="freeplace.lla.model.entities.Comment" />
-		<mapping class="freeplace.lla.model.entities.Metadata" />
+		<mapping class="freeplace.lla.model.entities.user.User" />
+		<mapping class="freeplace.lla.model.entities.user.Role" />
+		<mapping class="freeplace.lla.model.entities.user.Comment" />
+		<mapping class="freeplace.lla.model.entities.global.Metadata" />
 
 	</session-factory>
 
