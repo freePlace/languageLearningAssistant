@@ -30,19 +30,27 @@
 		<property name="show_sql">true</property>
 
 		<!-- Drop and re-create the database schema on startup
-		<property name="hbm2ddl.auto">create-drop</property> -->
+		<property name="hbm2ddl.auto">create-drop</property>-->
 
-        <mapping class="freeplace.lla.model.entities.User" />
-        <mapping class="freeplace.lla.model.entities.Role" />
-        <mapping class="freeplace.lla.model.entities.Comment" />
-        <mapping class="freeplace.lla.model.entities.Metadata" />
-        <mapping class="freeplace.lla.model.entities.UserAccount" />
-        <mapping class="freeplace.lla.model.entities.Language" />
-        <mapping class="freeplace.lla.model.entities.UserMessage" />
-        <mapping class="freeplace.lla.model.entities.SiteContent" />
-        <mapping class="freeplace.lla.model.entities.MainMenuItem" />
+        <mapping class="freeplace.lla.model.entities.user.User" />
+        <mapping class="freeplace.lla.model.entities.user.Role" />
+        <mapping class="freeplace.lla.model.entities.user.Comment" />
+        <mapping class="freeplace.lla.model.entities.global.Metadata" />
+        <mapping class="freeplace.lla.model.entities.user.UserAccount" />
+        <mapping class="freeplace.lla.model.entities.global.Language" />
+        <mapping class="freeplace.lla.model.entities.user.UserMessage" />
+        <mapping class="freeplace.lla.model.entities.global.SiteContent" />
+        <mapping class="freeplace.lla.model.entities.global.MainMenuItem" />
+        <mapping class="freeplace.lla.model.entities.course.CourseLevel" />
+        <mapping class="freeplace.lla.model.entities.course.Course" />
+        <mapping class="freeplace.lla.model.entities.course.CourseLesson" />
+        <mapping class="freeplace.lla.model.entities.course.TaskType" />
+        <mapping class="freeplace.lla.model.entities.course.Task" />
+        <mapping class="freeplace.lla.model.entities.user.course.UserCourse" />
+        <mapping class="freeplace.lla.model.entities.user.course.UserCourseLesson" />
 
 
-	</session-factory>
 
-</hibernate-configuration>
+    </session-factory>
+
+     </hibernate-configuration>

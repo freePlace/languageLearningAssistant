@@ -5,15 +5,15 @@ import java.util.Collection;
 
 import javax.persistence.EntityNotFoundException;
 
-import freeplace.lla.model.data.service.UserServiceImpl;
-import freeplace.lla.model.entities.UserAccount;
+import freeplace.lla.model.data.service.user.UserServiceImpl;
+import freeplace.lla.model.entities.user.UserAccount;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import freeplace.lla.model.entities.User;
+import freeplace.lla.model.entities.user.User;
  
 public class UserAuthorizationService implements UserDetailsService {
  

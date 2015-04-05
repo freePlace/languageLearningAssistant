@@ -4,9 +4,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,11 +13,7 @@ import javax.servlet.http.HttpSession;
 import freeplace.lla.controllers.constants.Attributes;
 import freeplace.lla.controllers.constants.Parameters;
 import freeplace.lla.controllers.constants.Pathes;
-import freeplace.lla.model.constants.Languages;
-import freeplace.lla.model.data.service.SiteContentServiceImpl;
-import freeplace.lla.model.data.service.UserMessageServiceImpl;
-import freeplace.lla.model.entities.SiteContent;
-import freeplace.lla.model.entities.UserMessage;
+import freeplace.lla.model.entities.user.UserMessage;
 import freeplace.lla.model.service.MainService;
 import org.json.simple.JSONValue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,15 +26,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import freeplace.lla.model.data.service.CommentServiceImpl;
-import freeplace.lla.model.data.service.UserServiceImpl;
 
 /** Controller for redirecting to main page
  * @author unnamedproj
  */
 @Controller
 public class MainController {
-
 
     @Autowired
     private MainService mainService;
@@ -53,6 +44,7 @@ public class MainController {
      */
     @RequestMapping(value= Pathes.SLASH + Pathes.MAIN, method = RequestMethod.GET)
     public final String getMainPage(final ModelMap model, HttpSession session) {
+
        model.addAttribute(Attributes.COMMENTS, mainService.findAllComments());
        String login = SecurityContextHolder.getContext().getAuthentication().getName();
        session.setAttribute(Attributes.SESSION_USER, mainService.findUserByLogin(login));
@@ -62,7 +54,7 @@ public class MainController {
     @RequestMapping(Pathes.MAIN + Pathes.SLASH + Pathes.GET_MESSAGES)
     @ResponseBody
     public HttpEntity<Message> getMessages(HttpSession session) {
-        List<UserMessage> userMessages = mainService.getByRecipient((freeplace.lla.model.entities.User) session.getAttribute(Attributes.USER));
+        List<UserMessage> userMessages = mainService.getByRecipient((freeplace.lla.model.entities.user.User) session.getAttribute(Attributes.USER));
         Map<String, Map<String, String>> obj=new LinkedHashMap<>();
         for(int i = 0; i < userMessages.size(); i++) {
             UserMessage userMessage = userMessages.get(i);
@@ -81,17 +73,16 @@ public class MainController {
     @RequestMapping(Pathes.MAIN + Pathes.SLASH + Pathes.USER_PROFILE_INFO)
     @ResponseBody
     public HttpEntity<User> userProfileInfo(HttpSession session) {
-        freeplace.lla.model.entities.User userModel = (freeplace.lla.model.entities.User)session.getAttribute(Attributes.USER);
+        freeplace.lla.model.entities.user.User userModel = (freeplace.lla.model.entities.user.User)session.getAttribute(Attributes.USER);
         Map<String, String> obj=new LinkedHashMap<>();
-        obj.put( freeplace.lla.model.entities.User.NAME,userModel.getName());
-        obj.put( freeplace.lla.model.entities.User.LAST_NAME,userModel.getLastName());
-        obj.put( freeplace.lla.model.entities.User.EMAIL,userModel.getEmail());
-        obj.put( freeplace.lla.model.entities.User.LOGIN,userModel.getLogin());
+        obj.put( freeplace.lla.model.entities.user.User.NAME,userModel.getName());
+        obj.put( freeplace.lla.model.entities.user.User.LAST_NAME,userModel.getLastName());
+        obj.put( freeplace.lla.model.entities.user.User.EMAIL,userModel.getEmail());
+        obj.put( freeplace.lla.model.entities.user.User.LOGIN,userModel.getLogin());
         //Hibernate.initialize(userModel.getRole());
-        obj.put( freeplace.lla.model.entities.User.ROLE_NAME,userModel.getRole().getName());
+        obj.put( freeplace.lla.model.entities.user.User.ROLE_NAME,userModel.getRole().getName());
         User user = new User(JSONValue.toJSONString(obj));
         user.add(linkTo(methodOn(MainController.class).userProfileInfo(session)).withSelfRel());
-
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
 
@@ -99,9 +90,9 @@ public class MainController {
     @ResponseBody
     public ResponseEntity<Comment> addComment(HttpServletRequest request, HttpSession session) {
         String message = request.getParameter(Attributes.COMMENT_MESSAGE);
-        freeplace.lla.model.entities.User user = (freeplace.lla.model.entities.User)session.getAttribute(Attributes.USER);
+        freeplace.lla.model.entities.user.User user = (freeplace.lla.model.entities.user.User)session.getAttribute(Attributes.USER);
         java.sql.Date now = new java.sql.Date(System.currentTimeMillis());
-        freeplace.lla.model.entities.Comment comment = new freeplace.lla.model.entities.Comment();
+        freeplace.lla.model.entities.user.Comment comment = new freeplace.lla.model.entities.user.Comment();
         comment.setUser(user);
         comment.setMessage(message);
         comment.setDate(now);
@@ -109,7 +100,7 @@ public class MainController {
         mainService.addComment(comment);
 
         Map<String, String> obj=new LinkedHashMap<>();
-        obj.put(freeplace.lla.model.entities.User.LOGIN, user.getLogin());
+        obj.put(freeplace.lla.model.entities.user.User.LOGIN, user.getLogin());
         obj.put(Attributes.COMMENT_MESSAGE, message);
         obj.put(Attributes.TIME, SimpleDateFormat.getInstance().format(new java.util.Date(now.getTime())));
         Comment resultComment = new Comment(JSONValue.toJSONString(obj));

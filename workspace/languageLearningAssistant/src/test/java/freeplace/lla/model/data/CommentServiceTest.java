@@ -1,7 +1,7 @@
 package freeplace.lla.model.data;
 
-import freeplace.lla.model.data.repositories.CommentRepository;
-import freeplace.lla.model.data.service.CommentServiceImpl;
+import freeplace.lla.model.data.repositories.user.CommentRepository;
+import freeplace.lla.model.data.service.user.CommentServiceImpl;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
