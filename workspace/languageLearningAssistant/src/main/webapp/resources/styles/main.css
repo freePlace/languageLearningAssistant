@@ -65,21 +65,25 @@ body {
 
 /*Registraiton form*/
 .regForm {
-	width: 100%;
-	height: 100%;
+	padding-top: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	max-width: 350px;
 }
 
-.regForm form {
-	margin:auto;
-
+.regForm table {
+	width:100%
 }
 
-
-
-.regForm form {
-	margin:auto;
-
+.regForm td {
+	padding: 5px;
 }
+/*Buttons*/
+.back-button {
+	margin-top:15px;
+}
+
 
 /*Language bar styles*/
 

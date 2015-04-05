@@ -14,7 +14,7 @@
     <link href="resources/template/bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="resources/template/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="resources/styles/main.css"/>
+    <link rel="stylesheet" href="resources/styles/main.css"/>
     <!-- Templates script-->
     <script src="resources/template/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="resources/template/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

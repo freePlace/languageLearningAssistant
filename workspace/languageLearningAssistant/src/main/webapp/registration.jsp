@@ -7,47 +7,10 @@
         <div class="wrapper">
             <div class="header"></div>
             <div class="main">
-                <div ID = "enter">
-                    <div ID="regForm">
-
-                        <!--<form action="#" ID="newRegForm">
-                            <label>
-                                <span>${SITE_CONTENT[NAME]}</span>
-                                <input type="text" name="name" placeholder = "Enter your name" required>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[LAST_NAME]}</span>
-                                <input type="text" name="lastName" placeholder = "Enter your last name" required>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[NATIVE_LANGUAGE]}</span>
-                                <select>
-                                    <option value="french">English</option>
-                                    <option value="russian">Russian</option>
-                                    <option value="french">French</option>
-                                </select>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[EMAIL]}</span>
-                                <input type="email" name="email" placeholder = "Enter your email" required>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[LOGIN]}</span>
-                                <input type="text" name="login" placeholder = "Enter your login" required>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[PASSWORD]}</span>
-                                <input type="password" name="pass" placeholder = "Enter password" required>
-                            </label>
-                            <label>
-                                <span>${SITE_CONTENT[REPEATED_PASSWORD]}</span>
-                                <input type="password" name="passRep" placeholder = "Repeat password" required>
-                            </label>
-                            <input type="submit" name="submit" value="${SITE_CONTENT[CREATE]}"/>
-                            <input type="button" onclick="" name="back" value="Back"/>
-                        </form>-->
-
-                        <form:form method="POST" commandName="user" action="registerUser">
+                <form action="/login.jsp" class="back-button">
+                    <input type="submit" value="Back"">
+                </form>
+                        <form:form method="POST" commandName="user" action="registerUser" class="regForm">
                            <table>
                             <tr>
                                 <td><form:label path="name">${SITE_CONTENT[NAME]}</form:label></td>
@@ -89,11 +52,10 @@
                                 <td colspan="2">
                                     <input type="submit" value="${SITE_CONTENT[CREATE]}"/>
                                 </td>
+
                             </tr>
                         </table>
                         </form:form>
-                    </div>
-                </div>
             </div>
         </div>
     <%@include file="parts/footer.jsp"%>
