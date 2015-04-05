@@ -3,8 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta name="google-translate-customization"
-        content="ae87ea11bc02c532-832691f05a93fd58-g8e4d142b9b9bcd9a-9">
+    <meta name="google-translate-customization" content="ae87ea11bc02c532-832691f05a93fd58-g8e4d142b9b9bcd9a-9">
 
     <title><c:out value="${projectName}"/></title>
     <!-- Templates CSS-->
@@ -14,10 +13,9 @@
     <link href="resources/template/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="resources/template/bower_components/morrisjs/morris.css" rel="stylesheet">
     <link href="resources/template/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="resources/styles/main.css" rel="stylesheet">
     <!-- Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="src/main/webapp/resources/styles/main.css"/>
-
+    <link rel="stylesheet" type="text/css" href="resources/styles/main.css"/>
+    <!-- Templates script-->
     <script src="resources/template/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="resources/template/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

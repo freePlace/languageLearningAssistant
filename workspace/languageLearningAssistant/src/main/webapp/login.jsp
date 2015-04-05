@@ -10,16 +10,15 @@
 				<%@include file="parts/languageBar.jsp" %>
             	<div ID="enter">
                 	<h3>${SITE_CONTENT[WELCOME_LOGIN]}</h3>
-                	<div ID="userLoginForm">
-                    	<form name="loginForm" action="j_spring_security_check" method="post">
+                    	<form name="loginForm" action="j_spring_security_check" method="post" id="userLoginForm">
                         	<c:out value="${error}"/>
                         	<c:out value="${message}"/>
                         	<input type="text" name="login" class="form-control" id="inputSuccess">
                         	<input name="password" type="password" class="form-control" id="inputSuccess">
                         	<input type="submit" value="${SITE_CONTENT[ENTER]}" />
-                    	</form>
-                    	<a href="registration">${SITE_CONTENT[CREATE_NEW_USER]}</a>
-               	 </div>
+							<a href="registration">${SITE_CONTENT[CREATE_NEW_USER]}</a>
+						</form>
+
             	</div>
         	</div>
     	</div>
