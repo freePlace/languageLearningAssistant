@@ -5,6 +5,7 @@ package freeplace.lla.controllers.constants;
  */
 public interface Pathes {
     public static final String SLASH = "/";
+    public static final String REDIRECT = "redirect:";
     public static final String MAIN = "main";
     public static final String REGISTRATION = "registration";
     public static final String REGISTER_USER = "registerUser";

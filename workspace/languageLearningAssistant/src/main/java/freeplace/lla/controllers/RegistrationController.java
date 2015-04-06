@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import freeplace.lla.model.springforms.User;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -31,7 +32,10 @@ public class RegistrationController {
     }
     
     @RequestMapping(value=Pathes.SLASH + Pathes.REGISTER_USER, method = RequestMethod.POST)
-    public String registerUser(@Valid User user, BindingResult result, Model model) {
+    public String registerUser(@Valid User user, BindingResult result, Model model,@RequestParam String action) {
+        if(action.equals("Back")) {
+            return Pathes.SLASH + Pathes.LOGIN;
+        }
         if (result.hasErrors()) {
             return Pathes.REGISTRATION;
         }

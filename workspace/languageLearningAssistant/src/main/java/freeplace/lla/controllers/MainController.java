@@ -115,7 +115,7 @@ public class MainController {
         session.setAttribute(Attributes.SESSION_SITE_CONTENT, mainService.getSiteContentForLanguage(language));
 
         String fullUrl = request.getRequestURL().toString();
-        String returnUrl = "redirect:" + fullUrl.replace("changeLanguage","");
+        String returnUrl = Pathes.REDIRECT + fullUrl.replace("changeLanguage","");
 
         return returnUrl;
     }
