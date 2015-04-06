@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!--<form action="#" ID="newRegForm">
+<form action="#" class="regForm">
 <label>
 <span>${SITE_CONTENT[NAME]}</span>
 <input type="text" name="name" placeholder = "Enter your name" required>
@@ -34,4 +34,4 @@
 </label>
 <input type="submit" name="submit" value="${SITE_CONTENT[CREATE]}"/>
 <input type="button" onclick="" name="back" value="Back"/>
-</form>-->
+</form>

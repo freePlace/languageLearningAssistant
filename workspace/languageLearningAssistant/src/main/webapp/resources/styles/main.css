@@ -65,11 +65,12 @@ body {
 
 /*Registraiton form*/
 .regForm {
+	padding-left: 27px;
 	padding-top: 10%;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
-	max-width: 350px;
+	max-width: 375px;
 }
 
 .regForm table {
@@ -78,6 +79,26 @@ body {
 
 .regForm td {
 	padding: 5px;
+}
+
+.regFormInput input {
+	display: block;
+	width: 100%;
+	max-width:200px;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+	-webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
 }
 /*Buttons*/
 .back-button {
