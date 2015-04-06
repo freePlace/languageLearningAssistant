@@ -24,27 +24,31 @@ body {
 
 .header {
 	background: url(http://www.rakowconstruction.com/wp-content/uploads/2011/09/log-background-feature-header1.jpg);
-	height: 150px;
+	height: 15%;
 	width: 100%;
 	margin: 0;
 	padding: 0;
 }
 
 .main {
-	width: 1000px;
+	max-width: 1000px;
 	margin: auto;
+	display: flex;
+	height: 82%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 /*Aligning login area*/
 .welcome-text {
-	text-align:center;
-	margin-top:10%;
+	align-self: center;
 }
 
 .userLoginForm {
-	width: 50%;
-	margin: auto;
-	max-width:200px;
+	max-width: 200px;
+	margin-bottom: 40%;
+
 }
 
 .userLoginForm input {
@@ -66,10 +70,7 @@ body {
 /*Registraiton form*/
 .regForm {
 	padding-left: 27px;
-	padding-top: 10%;
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
+	margin-bottom:15%;
 	max-width: 375px;
 }
 
@@ -103,6 +104,7 @@ body {
 /*Buttons*/
 .back-button {
 	margin-top:15px;
+	align-self: flex-start;
 }
 
 
@@ -110,7 +112,10 @@ body {
 
 #language-bar{
 	display:flex;
-	text-align: right;
+	flex-direction: row-reverse;
+	height: 3%;
+	max-width: 1000px;
+	margin:0 auto;
 }
 
 #language-bar li{
@@ -120,10 +125,6 @@ body {
 
 #language-bar ul{
 	padding-left: 10px;
-}
-
-#language-bar p{
-	margin-left:65%;
 }
 
 

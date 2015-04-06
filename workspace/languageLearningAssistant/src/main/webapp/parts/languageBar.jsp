@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"
          pageEncoding="utf-8"%>
 <div id="language-bar">
-    <p>Interface language:</p>
     <ul>
         <c:forEach var="language" items="${sessionScope.get('languages')}">
             <li>
@@ -9,4 +8,5 @@
             </li>
         </c:forEach>
     </ul>
+    <p>Interface language:</p>
 </div>

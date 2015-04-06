@@ -7,8 +7,8 @@
         <div class="wrapper">
             <div class="header"></div>
             <div class="main" >
-                <form action="/login.jsp" class="back-button">
-                    <input type="submit" value="Back"">
+                <form action="/login.jsp"  class="back-button">
+                    <input type="submit" value="Back"" action="/login.jsp">
                 </form>
                         <form:form method="POST" commandName="user" action="registerUser" class="regForm">
                            <table>
