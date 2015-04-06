@@ -19,4 +19,6 @@
     <script src="resources/template/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="resources/template/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+    <!-- Angular -->
+    <script src="resources/js/angular.min.js"></script>
 </head>
